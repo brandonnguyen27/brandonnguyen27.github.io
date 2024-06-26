@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header';
+import Introduction from './components/Introduction';
+import LanguagesFrameworks from './components/LanguagesFrameworks';
+import JobExperience from './components/JobExperience';
+import CodingProjects from './components/CodingProjects';
+import Contact from './components/Contact';
+import Hobbies from './components/Hobbies';
+import FadeInSection from './components/FadeInSection';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main>
+        <FadeInSection>
+          <Introduction />
+        </FadeInSection>
+        <FadeInSection>
+          <LanguagesFrameworks />
+        </FadeInSection>
+        <FadeInSection>
+          <JobExperience />
+        </FadeInSection>
+        <FadeInSection>
+          <CodingProjects />
+        </FadeInSection>
+        <FadeInSection>
+          <Contact />
+        </FadeInSection>
+        <FadeInSection>
+          <Hobbies />
+        </FadeInSection>
+      </main>
     </div>
   );
 }
