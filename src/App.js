@@ -5,9 +5,11 @@ import LanguagesFrameworks from './components/LanguagesFrameworks';
 import JobExperience from './components/JobExperience';
 import CodingProjects from './components/CodingProjects';
 import Contact from './components/Contact';
-import Hobbies from './components/Hobbies';
 import FadeInSection from './components/FadeInSection';
+import About from './components/About';
+
 import './App.css';
+
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
       <main>
         <FadeInSection>
           <Introduction />
+        </FadeInSection>
+        <FadeInSection>
+          <About />
         </FadeInSection>
         <FadeInSection>
           <LanguagesFrameworks />
@@ -29,10 +34,8 @@ function App() {
         <FadeInSection>
           <Contact />
         </FadeInSection>
-        <FadeInSection>
-          <Hobbies />
-        </FadeInSection>
       </main>
+      All rights reserved &copy; 2024
     </div>
   );
 }

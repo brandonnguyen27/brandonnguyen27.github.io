@@ -1,4 +1,5 @@
 import React from 'react';
+import GitHubCalendar from 'react-github-calendar';
 
 function CodingProjects() {
   return (
@@ -9,7 +10,10 @@ function CodingProjects() {
         <p>Project Description</p>
         <a href="project-url">View Project</a>
       </div>
-      {}
+      {/* Add more projects as needed */}
+      
+      <h3>My GitHub Contributions</h3>
+      <GitHubCalendar username="bnguy408" />
     </section>
   );
 }
