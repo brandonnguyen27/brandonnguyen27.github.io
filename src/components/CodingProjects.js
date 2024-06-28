@@ -1,6 +1,10 @@
 import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
 
+const customTheme = {
+  dark: ['#ffffff', '#cbb2fe', '#a284f6', '#8645e6', '#5c00b6'],
+};
+
 function CodingProjects() {
   return (
     <section id="projects">
@@ -13,7 +17,8 @@ function CodingProjects() {
       {/* Add more projects as needed */}
       
       <h3>My GitHub Contributions</h3>
-      <GitHubCalendar username="bnguy408" />
+      <GitHubCalendar username="bnguy408"
+      theme={customTheme} />
     </section>
   );
 }
