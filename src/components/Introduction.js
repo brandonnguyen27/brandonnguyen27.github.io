@@ -9,7 +9,6 @@ function Introduction() {
 
   useEffect(() => {
     if (showName) {
-      // Delay the picture appearance slightly after the name appears
       const timer = setTimeout(() => setShowPicture(true), 500);
       return () => clearTimeout(timer);
     }

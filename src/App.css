@@ -25,6 +25,7 @@ header {
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s ease-in-out;
+  font-weight: 500;
 }
 
 .header.visible {
@@ -64,7 +65,9 @@ nav ul li {
 
 nav ul li a:hover {
   color: #A100FF;
+  transition: color 0.4s ease;
 }
+
 
 #introduction {
   height: 100vh;
@@ -74,6 +77,7 @@ nav ul li a:hover {
   align-items: center;
   text-align: center;
   padding-top: 30px; /* Adjust based on header height */
+  background-color: #f8f9fa;
 }
 
 .intro-content h1 {
@@ -87,18 +91,8 @@ nav ul li a:hover {
   margin-top: 0;
 }
 
-.profile-pic {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 2rem 0;
-}
-
 section {
   margin-bottom: 2rem;
-  padding: 2rem;
-  background-color: #f4f4f4;
   border-radius: 5px;
 }
 
@@ -317,7 +311,7 @@ main {
 .about-text p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #000000;
   margin-bottom: 15px;
 }
 
@@ -349,10 +343,114 @@ main {
     margin-bottom: 30px;
   }
 }
+.skills-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: -75px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.skills-header {
+  text-align: center; /* Center the header text */
+  margin-bottom: 20px;
+  position: relative; /* Add this */
+}
+
+.skills-header h2 {
+  display: inline-block; /* Allow the h2 to be centered */
+  margin: 0; /* Remove default margin */
+  font-size: 1.8rem;
+}
+
+.skills-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-category {
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.skill-category h3 {
+  margin-bottom: 10px;
+}
+
+.skill-category ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skill-category li {
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.high-experience {
+  background-color: #A100FF;
+  color: white;
+}
+
+.medium-experience {
+  background-color: #c054ff;
+  color: white;
+}
+
+.low-experience {
+  background-color: #dfa8ff;
+  color: white;
+}
+
+.experience-key {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+}
+
+.experience-key span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px 0 10px;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    flex-direction: column;
+  }
+  
+  .skill-category {
+    margin-bottom: 20px;
+  }
+
+  .skills-header {
+    text-align: left;
+  }
+
+  .experience-key {
+    position: static;
+    margin-top: 10px;
+  }
+}
 
 .job-experience-section {
   padding: 50px 0;
-  background-color: #9b9898;
+  background-color: #f8f9fa;
 }
 
 .job-experience-section h2 {
@@ -437,7 +535,13 @@ main {
 
 .contact-section {
   padding: 4rem 2rem;
-  background-color: #ffffff;
+  background-image: url('../public/laguna.jpg');
+  background-size: cover; 
+  background-position: center; 
+  width: 100vw; 
+  position: relative; 
+  left: 50%; 
+  transform: translateX(-50%); 
 }
 
 .contact-container {
@@ -445,7 +549,7 @@ main {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -458,7 +562,7 @@ main {
 
 .contact-form-container h2 {
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #000000;
 }
 
 .contact-form {
@@ -478,6 +582,7 @@ main {
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   transition: border-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
 }
 
 .form-group input:focus,
@@ -501,6 +606,7 @@ main {
   transition: background-color 0.3s ease;
   font-size: 1rem;
   font-weight: bold;
+  font-family: 'Inter', sans-serif;
 }
 
 .submit-btn:hover {
@@ -557,106 +663,173 @@ main {
   }
 }
 
-.skills-section {
+.projects-section {
+  background-color: #ffffff;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
   background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: -50px;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.skills-header {
-  text-align: center; /* Center the header text */
-  margin-bottom: 20px;
-  position: relative; /* Add this */
+.project-card:hover {
+  transform: scale(1.05);
 }
 
-.skills-header h2 {
-  display: inline-block; /* Allow the h2 to be centered */
-  margin: 0; /* Remove default margin */
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.skills-container {
+.project-content {
+  padding: 1rem;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.project-languages {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
 
-.skill-category {
-  flex: 1;
-  margin: 0 10px;
+.language-tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.copyright {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.github-calendar-title {
+  margin-top: 3rem;
   text-align: center;
 }
 
-.skill-category h3 {
-  margin-bottom: 10px;
+.coursework-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(100, 100, 100, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.skill-category ul {
-  list-style-type: none;
-  padding: 0;
+
+.coursework-content {
+  background-color: rgb(255, 255, 255);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.course-item {
+  display: flex;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.course-info {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.course-code {
+  font-style: italic;
+  color: #666;
+}
+
+.course-description {
+  flex: 2;
+}
+
+.skills-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 1rem; /* Adjust as needed to maintain overall spacing */
 }
 
-.skill-category li {
-  margin-bottom: 5px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  display: inline-block;
+
+
+.coursework-button {
+  margin-top: 1rem; 
+  font-size: 0.9rem; /* Makes the button text smaller */
+  padding: 0.2rem 0.6rem; /* Reduces padding to make the button smaller */
+  background-color: white;
+  color: #666;
+  border: 2px solid #666;
+  border-radius: 15px; /* Slightly reduced for the smaller button */
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  align-self: flex-start; /* Aligns the button to the left */
+  font-family: 'Inter', sans-serif;
 }
 
-.high-experience {
-  background-color: #8645e6;
+.coursework-button:hover {
+  border: 2px solid #A100FF;
+  background-color: #A100FF;
   color: white;
 }
 
-.medium-experience {
-  background-color: #a284f6;
-  color: white;
-}
-
-.low-experience {
-  background-color: #cbb2fe;
-  color: white;
-}
-
-.experience-key {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 0.8em;
-  display: flex;
-  align-items: center;
-}
-
-.experience-key span {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px 0 10px;
-}
-
-@media (max-width: 768px) {
-  .skills-container {
-    flex-direction: column;
-  }
-  
-  .skill-category {
-    margin-bottom: 20px;
-  }
-
-  .skills-header {
-    text-align: left;
-  }
-
-  .experience-key {
-    position: static;
-    margin-top: 10px;
-  }
-}

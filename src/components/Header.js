@@ -22,7 +22,9 @@ function Header() {
     <header className={`header ${visible ? 'visible' : 'hidden'}`}>
       <div className="header-content">
         <div className="logo-container">
-          <img src="favicon.ico" alt="Brandon Nguyen Logo" className="logo" />
+          <a href = "#introduction">
+          <img src="favicon.ico" alt="Brandon Nguyen Logo" className="logo"/>
+          </a>
         </div>
         <nav>
           <ul>
@@ -30,7 +32,7 @@ function Header() {
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#contact">Resume</a></li>
+            <li class="resumeButton"><a href="#resume">Resume</a></li>
           </ul>
         </nav>
       </div>

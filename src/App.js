@@ -9,7 +9,7 @@ import FadeInSection from './components/FadeInSection';
 import About from './components/About';
 
 import './App.css';
-
+const currentYear = new Date().getFullYear();
 
 function App() {
   return (
@@ -35,9 +35,13 @@ function App() {
           <Contact />
         </FadeInSection>
       </main>
-      All rights reserved &copy; 2024
+      <div className="copyright">
+          <p>&copy; {currentYear} Brandon Nguyen. All rights reserved.</p>
+        </div>
     </div>
   );
 }
+
+
 
 export default App;

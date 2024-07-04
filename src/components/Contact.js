@@ -11,7 +11,7 @@ function Contact() {
     setEmail('');
     setMessage('');
   };
-
+  const currentYear = new Date().getFullYear();
   return (
     <section id="contact" className="contact-section">
       <div className="contact-container">
