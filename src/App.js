@@ -7,11 +7,11 @@ import CodingProjects from './components/CodingProjects';
 import Contact from './components/Contact';
 import FadeInSection from './components/FadeInSection';
 import About from './components/About';
-
 import './App.css';
-const currentYear = new Date().getFullYear();
+
 
 function App() {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="App">
       <Header />
