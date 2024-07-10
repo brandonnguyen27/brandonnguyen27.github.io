@@ -3,44 +3,49 @@ import React, { useState, useEffect } from 'react';
 function Header() {
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const visible = prevScrollPos > currentScrollPos;
-
-      setVisible(visible);
+      setVisible(prevScrollPos > currentScrollPos);
       setPrevScrollPos(currentScrollPos);
+      
+      if (prevScrollPos <= currentScrollPos && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
+  }, [prevScrollPos, isMenuOpen]);
 
   const scrollToSection = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
+
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+
+  const navigationItems = ['about', 'skills', 'experience', 'projects', 'contact', 'resume'].map((section) => (
+    <li key={section} className={section === 'resume' ? 'resumeButton' : ''}>
+      <a onClick={() => scrollToSection(section)}>
+        {section.charAt(0).toUpperCase() + section.slice(1)}
+      </a>
+    </li>
+  ));
 
   return (
     <header className={`header ${visible ? 'visible' : 'hidden'}`}>
       <div className="header-content">
-        <div className="logo-container">
-          <a onClick={() => scrollToSection('introduction')}>
-            <img src="favicon.ico" alt="Brandon Nguyen Logo" className="logo"/>
-          </a>
+        <div className="logo-container" onClick={() => scrollToSection('introduction')}>
+          <img src="favicon.ico" alt="Brandon Nguyen Logo" className="logo"/>
         </div>
-        <nav>
-          <ul>
-            <li><a onClick={() => scrollToSection('about')}>About</a></li>
-            <li><a onClick={() => scrollToSection('experience')}>Experience</a></li>
-            <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
-            <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
-            <li className="resumeButton"><a onClick={() => scrollToSection('resume')}>Resume</a></li>
-          </ul>
+        <button className="menu-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
+        <nav className={`${isMenuOpen ? 'open' : ''} ${visible ? 'visible' : 'hidden'}`}>
+          <ul>{navigationItems}</ul>
         </nav>
       </div>
       <style jsx>{`
@@ -53,6 +58,38 @@ function Header() {
         }
         .logo-container:hover {
           transform: scale(1.1);
+        }
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+        }
+        @media (max-width: 768px) {
+          .menu-toggle {
+            display: block;
+          }
+          nav {
+            display: none;
+          }
+          nav.open {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+          nav ul {
+            flex-direction: column;
+            padding: 0;
+          }
+          nav ul li {
+            margin: 10px 0;
+            text-align: center;
+          }
         }
       `}</style>
     </header>
