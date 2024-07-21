@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 body {
   font-family: 'Inter', sans-serif;
@@ -15,93 +17,24 @@ body {
   padding: 20px;
 }
 
-header {
-  background-color: rgba(255, 255, 255, 1);
-  padding: 1rem 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease-in-out;
-  font-weight: 500;
-}
-
-.header.visible {
-  transform: translateY(0);
-}
-
-.header.hidden {
-  transform: translateY(-100%);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.logo {
-  height: 30px;
-  width: auto;
-  display: block;
-}
-
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  margin-left: 2rem;
-}
-
-nav ul li a:hover {
-  color: #A100FF;
-  transition: color 0.4s ease;
-}
-
-
 #introduction {
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding-top: 30px;
-  background-color: #f8f9fa;
+  background-color: #faf9f9;
 }
 
-.intro-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0;
-}
-
-.intro-content h2 {
-  font-size: 4rem;
-  color: #A100FF;
-  margin-top: 0;
-}
 
 section {
   margin-bottom: 2rem;
-  border-radius: 5px;
 }
 
 ul {
   padding-left: 20px;
-}
-
-.job, .project {
-  margin-bottom: 1rem;
 }
 
 a {
@@ -134,11 +67,41 @@ main {
   padding: 0 2rem;
 }
 
-.name {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
+.intro-text-container {
+  height: 10rem; /* Adjust this value based on your font sizes */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
+
+.intro-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  height: 2.5rem;
+  line-height: 1;
+}
+
+.intro-content h2.name {
+  font-size: 4rem;
+  color: #A100FF;
+  margin-top: 0;
+  height: 4rem;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+.intro-content h2.name.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 .intro-content h1 {
   height: 2.5rem;
@@ -150,15 +113,7 @@ main {
   margin-top: 0;
 }
 
-.react-activity-calendar {
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
-}
 
-.react-activity-calendar__legend {
-  justify-content: center;
-}
 
 .profile-pic-container {
   height: 0;
@@ -172,6 +127,8 @@ main {
 }
 
 .profile-pic {
+  position: relative;
+  z-index: 1000;
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -180,8 +137,6 @@ main {
 }
 
 .name {
-  opacity: 0;
-  transform: translateY(-20px);
   animation: fadeInDown 0.5s ease 0.35s forwards;
 }
 
@@ -285,7 +240,7 @@ main {
 
 .about-section {
   padding: 80px 0;
-  background-color: #f8f9fa; 
+  background-color: #faf9f9; 
 }
 
 .about-container {
@@ -318,13 +273,36 @@ main {
 .about-image {
   flex: 0 0 40%; 
   max-width: 400px; 
+  border-radius: 10px;  
 }
 
-.about-image img {
+.about-image .slick-slider {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.about-image .slick-slide img {
   width: 100%;
   height: auto;
-  border-radius: 10px; 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+  border-radius: 10px;
+
+}
+
+.about-image .slick-dots {
+  bottom: -25px;
+}
+
+.about-image .slick-prev, .about-image .slick-next {
+  z-index: 1;
+}
+
+.about-image .slick-prev {
+  left: 10px;
+}
+
+.about-image .slick-next {
+  right: 10px;
 }
 
 @media (max-width: 768px) {
@@ -447,89 +425,190 @@ main {
   }
 }
 
-.job-experience-section {
-  padding: 50px 0;
-  background-color: #f8f9fa;
-}
-
-.job-experience-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-.job-container {
+.job-content {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 20px;
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #333;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 4px solid #A100FF;
+  border-radius: 50%;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.left::after {
+  right: -17px;
+}
+
+.right::after {
+  left: -17px;
+}
+
+.left::before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: medium solid #ffffff;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #ffffff;
+  right: 30px;
+  transform: translateY(-50%);
+}
+
+.right::before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: medium solid #ffffff;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #ffffff transparent transparent;
+  left: 30px;
+  transform: translateY(-50%);
+}
+
+.timeline-content {
+  padding: 20px 20px;
+  background-color: #ffffff;
+  position: relative;
+  border-radius: 6px;
+}
+
+.timeline-date {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.left .timeline-date {
+  right: -200px;
+}
+
+.right .timeline-date {
+  left: -200px;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+.content-header {
   display: flex;
-  align-items: flex-start;
-  padding: 0 20px;
-}
-
-.job-logo {
-  flex: 0 0 150px;
-  margin-right: 40px;
-}
-
-.job-logo img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.job-details {
-  flex: 1;
-}
-
-.job-details h3 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.job-details h4 {
-  font-size: 1.4rem;
+  align-items: center;
   margin-bottom: 10px;
-  color: #555;
 }
 
-.job-duration {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 15px;
+.header-text {
+  flex-grow: 1;
 }
 
-.job-responsibilities {
+.header-text h3 {
+  margin: 0 0 5px 0;
+}
+
+.header-text h4 {
+  margin: 0;
+  color: #666;
+}
+
+.job-description {
+  margin: 10px 0 0 0;
   padding-left: 20px;
 }
 
-.job-responsibilities li {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 10px;
-  line-height: 1.4;
+.job-description li {
+  margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
-  .job-container {
-    flex-direction: column;
-    align-items: center;
+.job-section {
+  background-color: #faf9f9;
+}
+
+.job-content h2, .section-title{
+  text-align: center;
+  font-size: 2.5rem;
+}
+@media screen and (max-width: 600px) {
+  .timeline::before {
+    left: 31px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .timeline-item::before {
+    left: 60px;
+    border: medium solid #f0f0f0;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f0f0f0 transparent transparent;
   }
 
-  .job-logo {
-    margin-right: 0;
-    margin-bottom: 20px;
+  .left::after, .right::after {
+    left: 15px;
   }
 
-  .job-details {
-    text-align: center;
+  .left .timeline-date, .right .timeline-date {
+    right: auto;
+    left: -150px;
   }
+  
+  .right {
+    left: 0%;
+  }
+}
 
-  .job-responsibilities {
-    text-align: left;
-  }
+.react-activity-calendar {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
 }
 
 .contact-section {
@@ -597,24 +676,24 @@ main {
 
 .submit-btn {
   padding: 0.75rem 1.5rem;
-  background-color: #A100FF;
+  background: linear-gradient(to right, #6f00ff, #A100FF, #6f00ff);
+  background-size: 200% 100%;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-position 0.3s ease;
   font-size: 1rem;
   font-weight: bold;
   font-family: 'Inter', sans-serif;
 }
 
 .submit-btn:hover {
-  background-color: #420167;
+  background-position: 100% 0;
 }
-
 .contact-info {
   flex: 0 0 300px;
-  background-color: #A100FF;
+  background: linear-gradient(to right, #A100FF, #dd00ff);
   color: white;
   padding: 2rem;
   display: flex;
@@ -664,7 +743,7 @@ main {
 
 .projects-section {
   background-color: #ffffff;
-  padding: 4rem 0;
+  padding: 2.6rem 0;
 }
 
 .container {
@@ -673,12 +752,7 @@ main {
   padding: 0 1rem;
 }
 
-.section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+
 
 .projects-grid {
   display: grid;
@@ -696,12 +770,25 @@ main {
 
 .project-card:hover {
   transform: scale(1.05);
+  color: initial;
+
+}
+
+.project-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 }
 
 .project-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.2);
 }
 
 .project-content {
@@ -769,11 +856,16 @@ main {
   overflow-y: auto;
 }
 
+.coursework-content h2 {
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+}
+
 .close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.5rem;
+  font-size: 3rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -865,7 +957,7 @@ main {
   background-color: #A100FF;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1260px) {
   .scroll-indicator {
     display: none;
   }

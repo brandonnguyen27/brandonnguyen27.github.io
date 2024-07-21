@@ -1,28 +1,69 @@
 import React from 'react';
 
-function JobExperience() {
+const jobData = [
+  {
+    date: 'Sep 2024 - Dec 2024',
+    logo: 'ST.jpg',
+    position: 'Software Engineer Intern',
+    company: 'Stealth Startup',
+    description: [
+      'Incoming Fall 2024'
+    ],
+  },
+  {
+    date: 'Jul 2024 - Aug 2024',
+    logo: 'HS.jpg',
+    position: 'Software Engineer Fellow',
+    company: 'Headstarter AI',
+    description: [
+      'Developed scalable web applications using React and Node.js',
+      'Implemented CI/CD pipelines, improving deployment efficiency by 40%',
+      'Collaborated with UX team to enhance user interface, resulting in 25% increase in user engagement'
+    ],
+  },
+  {
+    date: 'Jun 2024 - Present',
+    logo: 'DA.png',
+    position: 'AI Analyst',
+    company: 'Data Annotation',
+    description: [
+      'Analyzing ',
+      'Optimized website performance, reducing load times by 30%',
+      'Mentored junior developers in React best practices'
+    ],
+  },
+];
+
+const JobExperience = () => {
   return (
-    <section id="experience" className="job-experience-section">
+    <section id="job-experience" className="job-section">
+    <div className="job-content">
       <h2>Job Experience</h2>
-      <div className="job-container">
-        <div className="job-logo">
-          <img src="DA.png" alt="Data Annotation Logo" />
-        </div>
-        <div className="job-details">
-          <h3>AI Trainer • Contract</h3>
-          <h4>Data Annotation</h4>
-          <p className="job-duration">June 2023 - Present</p>
-          <ul className="job-responsibilities">
-            <li>Trained and fine-tuned AI models to improve accuracy and performance.</li>
-            <li>Annotated large datasets for machine learning applications.</li>
-            <li>Collaborated with data scientists to optimize data labeling processes.</li>
-            <li>Contributed to the development of annotation guidelines and quality assurance protocols.</li>
-            <li>Participated in regular team meetings to discuss project progress and challenges.</li>
-          </ul>
-        </div>
+      <div className="timeline">
+        {jobData.map((job, index) => (
+          <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">{job.date}</div>
+            <div className="timeline-content">
+              <div className="content-header">
+                <img src={job.logo} alt={`${job.company} logo`} className="company-logo" />
+                <div className="header-text">
+                  <h3>{job.position}</h3>
+                  <h4>{job.company}</h4>
+                </div>
+              </div>
+              <ul className="job-description">
+                {job.description.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
   );
-}
+};
 
 export default JobExperience;

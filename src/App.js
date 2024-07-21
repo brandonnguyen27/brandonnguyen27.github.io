@@ -30,7 +30,6 @@ function App() {
           const activeSectionIndex = sections.findIndex(
             (section) => section === entry.target.id
           );
-          // You might want to update some state here or call a function
           console.log('Active section:', sections[activeSectionIndex]);
         }
       });
@@ -90,7 +89,7 @@ function App() {
       </main>
       <ScrollIndicator sections={sections} />
       <div className="copyright">
-        <p>&copy; {currentYear} Brandon Nguyen. All rights reserved.</p>
+        <p>&copy; {currentYear} Brandon Nguyen - Thanks for stopping by!</p>
       </div>
     </div>
   );

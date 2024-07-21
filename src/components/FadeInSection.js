@@ -10,11 +10,10 @@ function FadeInSection({ children }) {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             setVisible(true);
-            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
     const currentRef = domRef.current;
@@ -24,7 +23,7 @@ function FadeInSection({ children }) {
 
     return () => {
       if (currentRef) {
-        observer.unobserve(currentRef);
+        observer.disconnect();
       }
     };
   }, []);

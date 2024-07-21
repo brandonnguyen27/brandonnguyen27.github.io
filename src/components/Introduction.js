@@ -28,14 +28,17 @@ function Introduction() {
   return (
     <section id="introduction">
       <div className="intro-content">
-        <h1>
-          <TypeWriter 
-            text="Hello, I'm " 
-            delay={75} 
-            onTypingComplete={handleTypingComplete}
-          />
-        </h1>
+        <div className="intro-text-container">
+          <h1>
+            <TypeWriter 
+              text="Hello, I'm " 
+              delay={75} 
+              onTypingComplete={handleTypingComplete}
+            />
+          </h1>
         {showName && <h2 className="name">Brandon Nguyen</h2>}
+        
+        </div>
         <div className={`profile-pic-container ${showPicture ? 'show' : ''}`}>
           <img src="intropic.JPG" alt="Brandon Nguyen" className="profile-pic" />
           {showBalls && (

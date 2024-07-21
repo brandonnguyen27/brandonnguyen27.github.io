@@ -5,33 +5,35 @@ const projects = [
   {
     id: 1,
     title: 'Project 1',
-    image: 'https://via.placeholder.com/300x200',
-    languages: ['React', 'Node.js', 'MongoDB'],
-    description: 'A full-stack web application for managing tasks and projects.',
+    image: 'rizz.png',
+    languages: ['Gyatt'],
+    description: 'Let me cook',
     githubUrl: 'https://github.com/yourusername/project1',
   },
   {
     id: 2,
     title: 'Project 2',
-    image: 'https://via.placeholder.com/300x200',
-    languages: ['Python', 'TensorFlow', 'Keras'],
-    description: 'Machine learning model for predicting stock prices.',
+    image: 'rizz.png',
+    languages: ['Rizz'],
+    description: 'Skibidi toilet',
     githubUrl: 'https://github.com/yourusername/project2',
   },
   {
     id: 3,
     title: 'Project 3',
-    image: 'https://via.placeholder.com/300x200',
-    languages: ['Vue.js', 'Express', 'PostgreSQL'],
-    description: 'E-commerce platform with user authentication and payment integration.',
+    image: 'rizz.png',
+    languages: ['Skibidi'],
+    description: 'deez nuts',
     githubUrl: 'https://github.com/yourusername/project3',
-  },
+  }
 ];
 
 const ProjectCard = ({ project }) => {
   return (
     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-card">
-      <img src={project.image} alt={project.title} className="project-image" />
+      <div className="project-image-container">
+        <img src={project.image} alt={project.title} className="project-image" />
+      </div>
       <div className="project-content">
         <h3 className="project-title">{project.title}</h3>
         <div className="project-languages">

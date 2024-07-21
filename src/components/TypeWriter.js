@@ -1,4 +1,3 @@
-// components/TypeWriter.js
 import React, { useState, useEffect } from 'react';
 
 function TypeWriter({ text, delay, onTypingComplete }) {

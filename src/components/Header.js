@@ -49,6 +49,70 @@ function Header() {
         </nav>
       </div>
       <style jsx>{`
+        header {
+          background-color: rgba(255, 255, 255, 1);
+          padding: 0.8rem 0;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 100;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease-in-out;
+          font-weight: 500;
+        }
+
+        .header.visible {
+          transform: translateY(0);
+        }
+
+        .header.hidden {
+          transform: translateY(-100%);
+        }
+
+        .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .logo {
+          height: 30px;
+          width: auto;
+          display: block;
+        }
+        nav ul {
+          display: flex;
+          justify-content: flex-end;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav ul li {
+          margin-left: 2rem;
+        }
+
+        nav ul li a:hover {
+          color: #A100FF;
+          transition: color 0.4s ease;
+        }
+        .resumeButton a {
+          background-color: white;
+          color: #a100FF;
+          padding: 2.5px 5px;
+          border: 2px solid #a100FF;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+        }
+
+        .resumeButton a:hover {
+          background-color: #a100FF;
+          color: white;
+        }
         nav ul li a {
           cursor: pointer;
         }
