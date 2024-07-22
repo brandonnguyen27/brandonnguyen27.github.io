@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Introduction from './components/Introduction';
 import LanguagesFrameworks from './components/LanguagesFrameworks';
@@ -14,43 +14,45 @@ const currentYear = new Date().getFullYear();
 
 function App() {
 
-  const sections = ['introduction', 'about', 'languages', 'experience', 'projects', 'contact'];
+  const sections = useMemo(() => ['introduction', 'about', 'languages', 'experience', 'projects', 'contact'], []);
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    };
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  };
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const activeSectionIndex = sections.findIndex(
-            (section) => section === entry.target.id
-          );
-          console.log('Active section:', sections[activeSectionIndex]);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sectionRefs.current.forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
+  const observerCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const activeSectionIndex = sections.findIndex(
+          (section) => section === entry.target.id
+        );
+        console.log('Active section:', sections[activeSectionIndex]);
       }
     });
+  };
 
-    return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
-        }
-      });
-    };
-  }, [sections]);
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  const currentRefs = sectionRefs.current;
+
+  currentRefs.forEach((ref) => {
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+  });
+
+  return () => {
+    currentRefs.forEach((ref) => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    });
+  };
+}, [sections]);
 
   return (
     <div className="App">

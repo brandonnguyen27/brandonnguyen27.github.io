@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 
 const ScrollIndicator = ({ sections }) => {
   const [activeSection, setActiveSection] = useState(0);
-  const observers = useRef([]);
+  const observersRef = useRef([]);
   const intersectionRatios = useMemo(() => new Array(sections.length).fill(0), [sections.length]);
 
   const buildThresholdList = useCallback(() => {
@@ -38,17 +38,20 @@ const ScrollIndicator = ({ sections }) => {
       }
     };
 
-    sections.forEach((section) => {
+    const observers = sections.map((section) => {
       const element = document.getElementById(section);
       if (element) {
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         observer.observe(element);
-        observers.current.push(observer);
+        return observer;
       }
-    });
+      return null;
+    }).filter(Boolean);
+
+    observersRef.current = observers;
 
     return () => {
-      observers.current.forEach((observer) => observer.disconnect());
+      observers.forEach((observer) => observer.disconnect());
     };
   }, [sections, observerOptions, intersectionRatios]);
 
