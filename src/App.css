@@ -18,7 +18,7 @@ body {
 }
 
 #introduction {
-  height: 95vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -494,6 +494,7 @@ main {
   border-color: transparent transparent transparent #ffffff;
   right: 30px;
   transform: translateY(-50%);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
 }
 
 .right::before {
@@ -507,6 +508,7 @@ main {
   border-color: transparent #ffffff transparent transparent;
   left: 30px;
   transform: translateY(-50%);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
 }
 
 .timeline-content {
@@ -514,6 +516,7 @@ main {
   background-color: #ffffff;
   position: relative;
   border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-date {
@@ -567,6 +570,7 @@ main {
 
 .job-section {
   background-color: #faf9f9;
+  padding: 2rem 0;
 }
 
 .job-content h2, .section-title{
@@ -742,8 +746,7 @@ main {
 }
 
 .projects-section {
-  background-color: #ffffff;
-  padding: 2.6rem 0;
+  padding: 2.1rem 0;
 }
 
 .container {
@@ -761,7 +764,7 @@ main {
 }
 
 .project-card {
-  background-color: white;
+  background-color: #faf9f9;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -808,8 +811,8 @@ main {
 }
 
 .language-tag {
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: #A100FF;
+  color: #ffffff;
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.875rem;
@@ -820,6 +823,76 @@ main {
 .project-description {
   color: #666;
   font-size: 0.875rem;
+}
+
+.project-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.project-overlay-content {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.project-video {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.project-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-date {
+  font-style: italic;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-links a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: #A100FF;
 }
 
 .copyright {

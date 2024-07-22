@@ -16,9 +16,9 @@ const jobData = [
     position: 'Software Engineer Fellow',
     company: 'Headstarter AI',
     description: [
-      'Developed scalable web applications using React and Node.js',
-      'Implemented CI/CD pipelines, improving deployment efficiency by 40%',
-      'Collaborated with UX team to enhance user interface, resulting in 25% increase in user engagement'
+      'Built 5+ AI projects',
+      'Scaled app to 1000 users',
+      'Gained mentorship from industry professionals'
     ],
   },
   {
@@ -27,10 +27,9 @@ const jobData = [
     position: 'AI Analyst',
     company: 'Data Annotation',
     description: [
-      'Analyzing ',
-      'Optimized website performance, reducing load times by 30%',
-      'Mentored junior developers in React best practices'
-    ],
+      'Analyzed and create code snippets given AI prompts',
+      'prompt engineering'
+    ]
   },
 ];
 

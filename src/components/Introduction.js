@@ -36,8 +36,7 @@ function Introduction() {
               onTypingComplete={handleTypingComplete}
             />
           </h1>
-        {showName && <h2 className="name">Brandon Nguyen</h2>}
-        
+          {showName && <h2 className="name">Brandon Nguyen</h2>}
         </div>
         <div className={`profile-pic-container ${showPicture ? 'show' : ''}`}>
           <img src="intropic.JPG" alt="Brandon Nguyen" className="profile-pic" />
@@ -46,9 +45,16 @@ function Introduction() {
               {[
                 { href: "https://github.com/bnguy408", className: "github", icon: "fab fa-github", label: "GitHub" },
                 { href: "https://linkedin.com/in/brannguy27", className: "linkedin", icon: "fab fa-linkedin", label: "LinkedIn" },
-                { href: "/path-to-your-resume.pdf", className: "resume", icon: "fas fa-file-alt", label: "Resume" }
+                { href: "res.pdf", className: "resume", icon: "fas fa-file-alt", label: "Resume" }
               ].map(({ href, className, icon, label }) => (
-                <a key={className} href={href} className={`ball ${className}`} aria-label={label}>
+                <a 
+                  key={className} 
+                  href={href} 
+                  className={`ball ${className}`} 
+                  aria-label={label} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <i className={icon}></i>
                 </a>
               ))}

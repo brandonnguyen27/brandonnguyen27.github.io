@@ -21,7 +21,11 @@ function Header() {
   }, [prevScrollPos, isMenuOpen]);
 
   const scrollToSection = (elementId) => {
-    document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' });
+    if (elementId === 'resume') {
+      window.open('/res.pdf', '_blank', 'noopener,noreferrer');
+    } else {
+      document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
 
@@ -29,9 +33,15 @@ function Header() {
 
   const navigationItems = ['about', 'skills', 'experience', 'projects', 'contact', 'resume'].map((section) => (
     <li key={section} className={section === 'resume' ? 'resumeButton' : ''}>
-      <a onClick={() => scrollToSection(section)}>
-        {section.charAt(0).toUpperCase() + section.slice(1)}
-      </a>
+      {section === 'resume' ? (
+        <a href="/res.pdf" target="_blank" rel="noopener noreferrer">
+          Resume
+        </a>
+      ) : (
+        <a onClick={() => scrollToSection(section)}>
+          {section.charAt(0).toUpperCase() + section.slice(1)}
+        </a>
+      )}
     </li>
   ));
 
