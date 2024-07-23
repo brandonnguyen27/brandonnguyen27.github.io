@@ -29,19 +29,19 @@ function About() {
         <div className="about-image">
           <Slider {...settings}>
             <div>
-              <img src="about1.JPG" alt="Brandon Nguyen 1" />
+              <img src="about1.JPG"/>
             </div>
             <div>
-              <img src="about2.JPG" alt="Brandon Nguyen 2" />
+              <img src="about2.JPG"/>
             </div>
             <div>
-              <img src="about3.jpg" alt="Brandon Nguyen 3" />
+              <img src="about3.jpg"/>
             </div>
             <div>
-              <img src="about4.JPG" alt="Brandon Nguyen 3" />
+              <img src="about4.JPG"/>
             </div>
             <div>
-              <img src="about5.JPG" alt="Brandon Nguyen 3" />
+              <img src="about5.jpg"/>
             </div>
           </Slider>
         </div>
