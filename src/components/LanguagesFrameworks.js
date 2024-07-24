@@ -108,7 +108,7 @@ function SkillsSection() {
           Relevant Coursework
         </button>
         <div className="experience-key">
-          <span className="high-experience"></span> Advanced
+          <span className="high-experience"></span> Proficient
           <span className="medium-experience"></span> Intermediate
           <span className="low-experience"></span> Beginner
         </div>

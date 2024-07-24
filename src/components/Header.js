@@ -34,7 +34,7 @@ function Header() {
   const navigationItems = ['about', 'skills', 'experience', 'projects', 'contact', 'resume'].map((section) => (
     <li key={section} className={section === 'resume' ? 'resumeButton' : ''}>
       {section === 'resume' ? (
-        <a href="/res.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           Resume
         </a>
       ) : (
