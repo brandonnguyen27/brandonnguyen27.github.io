@@ -91,7 +91,7 @@ function App() {
       </main>
       <ScrollIndicator sections={sections} />
       <div className="copyright">
-        <p>&copy; {currentYear} Brandon Nguyen - Thanks for stopping by!</p>
+        <p>&copy; {currentYear} Brandon Nguyen - Design by yours truly</p>
       </div>
     </div>
   );
