@@ -2,15 +2,6 @@ import React from 'react';
 
 const jobData = [
   {
-    date: 'Sep 2024 - Dec 2024',
-    logo: 'ST.jpg',
-    position: 'Software Engineer Intern',
-    company: 'Stealth Startup',
-    description: [
-      'Incoming Fall 2024'
-    ],
-  },
-  {
     date: 'Jul 2024 - Aug 2024',
     logo: 'HS.jpg',
     position: 'Software Engineer Fellow',
