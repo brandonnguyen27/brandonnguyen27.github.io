@@ -91,7 +91,7 @@ function App() {
       </main>
       <ScrollIndicator sections={sections} />
       <div className="copyright">
-        <p>&copy; {currentYear} Brandon Nguyen - Design by me :)</p>
+        <p>&copy; {currentYear} Brandon Nguyen - Made from scratch with React :) - Last Updated 8/2024</p>
       </div>
     </div>
   );
